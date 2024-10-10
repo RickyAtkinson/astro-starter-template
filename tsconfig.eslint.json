@@ -1,0 +1,6 @@
+{
+  "include": [".prettierrc.mjs"],
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}
