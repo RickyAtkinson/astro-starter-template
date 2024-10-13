@@ -2,7 +2,7 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "cSpell.ignorePaths": ["package-lock.json", "pnpm-lock.yaml"],
+  "cSpell.ignorePaths": ["pnpm-lock.yaml"],
   "cSpell.words": [
     "astrojs",
     "bezier",
