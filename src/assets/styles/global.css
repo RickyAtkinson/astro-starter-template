@@ -27,8 +27,8 @@
     @font-face {
       font-family: Inter;
       src: url('/assets/fonts/Inter-ExtraLight.woff2') format('woff2');
-      font-style: ExtraLight;
-      font-weight: 600;
+      font-style: normal;
+      font-weight: 200;
       font-display: swap;
     }
 
@@ -36,7 +36,7 @@
       font-family: Inter;
       src: url('/assets/fonts/Inter-ExtraLightItalic.woff2') format('woff2');
       font-style: italic;
-      font-weight: 600;
+      font-weight: 200;
       font-display: swap;
     }
     @font-face {
@@ -58,7 +58,7 @@
     @font-face {
       font-family: Inter;
       src: url('/assets/fonts/Inter-SemiBold.woff2') format('woff2');
-      font-style: semibold;
+      font-style: normal;
       font-weight: 600;
       font-display: swap;
     }
@@ -74,7 +74,7 @@
     @font-face {
       font-family: Inter;
       src: url('/assets/fonts/Inter-Bold.woff2') format('woff2');
-      font-style: bold;
+      font-style: normal;
       font-weight: 700;
       font-display: swap;
     }
