@@ -87,4 +87,21 @@
       font-display: swap;
     }
   }
+
+  :root {
+    /* Colors */
+    --color-primary-50: hsl(267deg 82% 98%);
+    --color-primary-100: hsl(263deg 84% 95%);
+    --color-primary-200: hsl(261deg 86% 91%);
+    --color-primary-300: hsl(261deg 85% 85%);
+    --color-primary-400: hsl(263deg 85% 75%);
+    --color-primary-500: hsl(264deg 82% 63%);
+    --color-primary-600: hsl(264deg 73% 56%);
+    --color-primary-700: hsl(265deg 64% 47%);
+    --color-primary-800: hsl(266deg 61% 39%);
+    --color-primary-900: hsl(267deg 60% 32%);
+    --color-primary-950: hsl(266deg 76% 21%);
+    --color-light: hsl(0deg 0% 96%);
+    --color-dark: hsl(0deg 0% 4%);
+  }
 }
