@@ -2,5 +2,15 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "cSpell.words": ["astrojs", "tailwindcss"]
+  "cSpell.ignorePaths": ["package-lock.json", "pnpm-lock.yaml"],
+  "cSpell.words": [
+    "astrojs",
+    "bezier",
+    "evenodd",
+    "minmax",
+    "rarr",
+    "rgba",
+    "tailwindcss",
+    "tsconfigs"
+  ]
 }
