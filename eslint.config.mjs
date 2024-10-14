@@ -39,10 +39,13 @@ export default [
     },
 
     rules: {
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
-          destructuredArrayIgnorePattern: '^_',
+          argsIgnorePattern: '(^_|Props)',
+          varsIgnorePattern: '(^_|Props)',
+          destructuredArrayIgnorePattern: '(^_|Props)',
           ignoreRestSiblings: true,
         },
       ],
