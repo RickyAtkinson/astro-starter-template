@@ -43,9 +43,9 @@ export default [
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
-          argsIgnorePattern: '(^_|Props)',
+          argsIgnorePattern: '^_',
           varsIgnorePattern: '(^_|Props)',
-          destructuredArrayIgnorePattern: '(^_|Props)',
+          destructuredArrayIgnorePattern: '^_',
           ignoreRestSiblings: true,
         },
       ],
