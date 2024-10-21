@@ -1,6 +1,44 @@
 # Astro Starter
 
-A basic starter template for Astro projects.
+A basic starter template for Astro projects with:
+
+- TypeScript
+- Tailwind CSS
+- Prettier
+- ESLint
+- Husky
+
+## Dependencies
+
+- [Node](https://nodejs.org/) version 20.18.0 or later recommended
+- [pnpm](https://pnpm.io/) version 9.12.1 or later recommended
+
+[Volta](https://volta.sh/) is recommended for managing Node versions. The
+recommended versions of Node and PNPm are
+[pinned](https://docs.volta.sh/reference/pin) with Volta in this templates
+`package.json` file.
+
+## Website Config
+
+Configuration for the website is stored in `./src/config.ts`. Below are
+descriptions for the default website config fields:
+
+| Name             | Required? | Description                                                                                               |
+| :--------------- | :-------- | :-------------------------------------------------------------------------------------------------------- |
+| siteUrl          | Yes       | The URL of this website, e.g. "`https://google.com/`"                                                     |
+| siteName         | Yes       | The name of this website, e.g. "Google Search"                                                            |
+| title            | Yes       | The default title for the title bar and metadata                                                          |
+| titleSuffix      | No        | If set, this is displayed in the title bar on all pages after the main title separated by " \| "          |
+| description      | Yes       | A short description of your site used for metadata                                                        |
+| tags             | Yes       | A string array of tags/keywords used for metadata                                                         |
+| htmlLang         | Yes       | ISO language code for the site used for the `<html>` tag `lang` attribute                                 |
+| locale           | Yes       | BCP language code for the website locale                                                                  |
+| alternateLocales | Yes       | A string array of alternate BCP language codes for alternate locales                                      |
+| author           | Yes       | An object containing data about the author of the website to be used pages that aren't articles           |
+| publisher        | Yes       | An object containing data about the website to be used as the publisher metadata on article pages         |
+| ogImage          | Yes       | An object containing data about the default Open Graph social image                                       |
+| twitterImage     | No        | An object containing data about the default Twitter(X) social image, ogImage will be used if not supplied |
+| socialMedia      | Yes       | An object containing details for each of the websites social media platforms                              |
 
 ## Commands
 
