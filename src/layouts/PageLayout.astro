@@ -1,0 +1,49 @@
+---
+import type {
+  AttributorData,
+  SocialImageMetadata,
+  TwitterCardType,
+} from 'types';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import MainWrapper from '@layouts/MainWrapper.astro';
+
+interface Props {
+  title?: string;
+  titleSuffix?: string;
+  description?: string;
+  tags?: string[];
+  author?: AttributorData;
+  ogImage?: SocialImageMetadata;
+  twitterImage?: SocialImageMetadata;
+  twitterCardType?: TwitterCardType;
+  twitterUsername?: string;
+}
+
+const {
+  title,
+  titleSuffix,
+  description,
+  tags,
+  author,
+  ogImage,
+  twitterImage,
+  twitterCardType,
+  twitterUsername,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  titleSuffix={titleSuffix}
+  description={description}
+  tags={tags}
+  author={author}
+  ogImage={ogImage}
+  twitterImage={twitterImage}
+  twitterCardType={twitterCardType}
+  twitterUsername={twitterUsername}
+>
+  <MainWrapper>
+    <slot />
+  </MainWrapper>
+</BaseLayout>

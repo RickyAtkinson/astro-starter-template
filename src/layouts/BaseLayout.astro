@@ -40,7 +40,7 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   htmlLang = defaultWebsiteConfig.htmlLang,
   locale = defaultWebsiteConfig.locale,
-  alternateLocales: alternateLocale = defaultWebsiteConfig.alternateLocales,
+  alternateLocales = defaultWebsiteConfig.alternateLocales,
   author = defaultWebsiteConfig.author,
   publisher = defaultWebsiteConfig.publisher,
   pubDatetime,
@@ -141,7 +141,7 @@ if (ogType === 'article') {
 
     <meta property="og:locale" content={locale} />
     {
-      alternateLocale.forEach((altLocale) => (
+      alternateLocales.forEach((altLocale) => (
         <meta property="og:locale:alternate" content={altLocale} />
       ))
     }
@@ -188,35 +188,7 @@ if (ogType === 'article') {
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body>
+  <body class="flex min-h-svh flex-col antialiased">
     <slot />
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
