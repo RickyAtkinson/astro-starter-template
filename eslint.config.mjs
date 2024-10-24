@@ -25,16 +25,6 @@ export default [
     },
 
     rules: {
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '(^_|Props)',
-          destructuredArrayIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
       '@typescript-eslint/triple-slash-reference': [
         'error',
         { path: 'always' },
