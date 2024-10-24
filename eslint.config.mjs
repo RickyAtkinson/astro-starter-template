@@ -1,27 +1,18 @@
 import globals from 'globals';
-import parser from 'astro-eslint-parser';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import tseslint from 'typescript-eslint';
+import astroParser from 'astro-eslint-parser';
+import tsParser from '@typescript-eslint/parser';
+import eslintPluginAstro from 'eslint-plugin-astro';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default [
-  ...compat.extends(
-    'eslint:recommended',
-    'plugin:@typescript-eslint/strict',
-    'plugin:@typescript-eslint/stylistic-type-checked',
-    'plugin:astro/recommended',
-    'plugin:astro/jsx-a11y-strict',
-    'prettier'
-  ),
+  js.configs.recommended,
+  ...tseslint.configs.strict,
+  ...tseslint.configs.stylistic,
+  ...eslintPluginAstro.configs['flat/recommended'],
+  ...eslintPluginAstro.configs['flat/jsx-a11y-recommended'],
+  eslintPluginPrettierRecommended,
   {
     languageOptions: {
       globals: {
@@ -31,11 +22,6 @@ export default [
 
       ecmaVersion: 'latest',
       sourceType: 'module',
-
-      parserOptions: {
-        project: ['./tsconfig.json', './tsconfig.eslint.json'],
-        extraFileExtensions: ['.astro'],
-      },
     },
 
     rules: {
@@ -59,12 +45,13 @@ export default [
     files: ['**/*.astro'],
 
     languageOptions: {
-      parser: parser,
+      parser: astroParser,
       ecmaVersion: 5,
       sourceType: 'script',
 
       parserOptions: {
-        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
+        parser: tsParser,
       },
     },
   },
