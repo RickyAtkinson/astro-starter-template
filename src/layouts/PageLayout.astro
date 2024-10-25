@@ -7,6 +7,9 @@ import type {
 import BaseLayout from '@layouts/BaseLayout.astro';
 import MainWrapper from '@layouts/MainWrapper.astro';
 
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
 interface Props {
   title?: string;
   titleSuffix?: string;
@@ -46,7 +49,9 @@ const {
   twitterUsername={twitterUsername}
   isPageIndexed={isPageIndexed}
 >
+  <Header title="Page header" />
   <MainWrapper>
     <slot />
   </MainWrapper>
+  <Footer />
 </BaseLayout>
