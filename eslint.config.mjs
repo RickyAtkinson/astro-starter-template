@@ -24,12 +24,7 @@ export default [
       sourceType: 'module',
     },
 
-    rules: {
-      '@typescript-eslint/triple-slash-reference': [
-        'error',
-        { path: 'always' },
-      ],
-    },
+    rules: {},
   },
   {
     files: ['**/*.astro'],
@@ -43,6 +38,16 @@ export default [
         extraFileExtensions: ['.astro'],
         parser: tsParser,
       },
+    },
+  },
+  {
+    files: ['**/*.d.ts'],
+
+    rules: {
+      '@typescript-eslint/triple-slash-reference': [
+        'error',
+        { path: 'always' },
+      ],
     },
   },
 ];
