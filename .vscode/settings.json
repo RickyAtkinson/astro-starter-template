@@ -11,6 +11,8 @@
     "datetime",
     "evenodd",
     "minmax",
+    "nofollow",
+    "noindex",
     "pintrest",
     "rarr",
     "rgba",
