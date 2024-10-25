@@ -17,6 +17,7 @@ interface Props {
   twitterImage?: SocialImageMetadata;
   twitterCardType?: TwitterCardType;
   twitterUsername?: string;
+  isPageIndexed?: boolean;
 }
 
 const {
@@ -29,6 +30,7 @@ const {
   twitterImage,
   twitterCardType,
   twitterUsername,
+  isPageIndexed,
 } = Astro.props;
 ---
 
@@ -42,6 +44,7 @@ const {
   twitterImage={twitterImage}
   twitterCardType={twitterCardType}
   twitterUsername={twitterUsername}
+  isPageIndexed={isPageIndexed}
 >
   <MainWrapper>
     <slot />
