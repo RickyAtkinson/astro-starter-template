@@ -98,6 +98,7 @@ if (ogType === 'article') {
     <meta name="generator" content={Astro.generator} />
 
     {!isPageIndexed && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- General meta tags -->
     <title>{titleSuffix ? `${title} | ${titleSuffix}` : title}</title>
