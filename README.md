@@ -25,7 +25,7 @@ descriptions for the default website config fields:
 
 | Name             | Required? | Description                                                                                               |
 | :--------------- | :-------- | :-------------------------------------------------------------------------------------------------------- |
-| siteUrl          | Yes       | The URL of this website, e.g. "`https://google.com/`"                                                     |
+| siteURL          | Yes       | The URL of this website, e.g. "`https://google.com/`"                                                     |
 | siteName         | Yes       | The name of this website, e.g. "Google Search"                                                            |
 | title            | Yes       | The default title for the title bar and metadata                                                          |
 | titleSuffix      | No        | If set, this is displayed in the title bar on all pages after the main title separated by " \| "          |

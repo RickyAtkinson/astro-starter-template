@@ -1,13 +1,13 @@
 export interface WebsiteConfig {
-  siteUrl: URL;
+  siteURL: URL;
   siteName: string;
   title: string;
   titleSuffix?: string;
   description: string;
   tags: string[];
-  htmlLang: IsoLanguageCode;
-  locale: BcpLanguageCode;
-  alternateLocales: BcpLanguageCode[];
+  htmlLang: ISOLanguageCode;
+  locale: BCPLanguageCode;
+  alternateLocales: BCPLanguageCode[];
   author: AttributorData;
   publisher: AttributorData;
   ogImage: SocialImageMetadata;
@@ -26,7 +26,7 @@ export interface SocialImageMetadata {
 interface SocialMediaAccount {
   platformName: string;
   username?: string;
-  profileUrl: URL;
+  profileURL: URL;
   // icon: string;
   // color: string;
 }
@@ -46,7 +46,7 @@ interface SocialMedia {
 export interface AttributorData {
   type: AttributorType;
   displayName: string;
-  profileUrl?: URL;
+  profileURL?: URL;
 }
 
 type AttributorType = 'Organization' | 'Person';
@@ -54,12 +54,12 @@ type AttributorType = 'Organization' | 'Person';
 type SocialImageType = 'image/jpeg' | 'image/png';
 
 // TODO: Support more Open Graph Type tags
-export type OgTypeTag = 'article' | 'website';
+export type OGTypeTag = 'article' | 'website';
 
 // TODO: Support more Twitter Card types
 export type TwitterCardType = 'summary' | 'summary_large_image';
 
-export type IsoLanguageCode =
+export type ISOLanguageCode =
   | 'ab'
   | 'aa'
   | 'af'
@@ -250,7 +250,7 @@ export type IsoLanguageCode =
   | 'za'
   | 'zu';
 
-export type BcpLanguageCode =
+export type BCPLanguageCode =
   | 'ar-SA'
   | 'bn-BD'
   | 'bn-IN'

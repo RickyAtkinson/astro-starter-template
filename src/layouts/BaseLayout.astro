@@ -1,9 +1,9 @@
 ---
 import type {
   AttributorData,
-  BcpLanguageCode,
-  IsoLanguageCode,
-  OgTypeTag,
+  BCPLanguageCode,
+  ISOLanguageCode,
+  OGTypeTag,
   SocialImageMetadata,
   TwitterCardType,
 } from 'types';
@@ -17,14 +17,14 @@ interface Props {
   description?: string;
   tags?: string[];
   canonicalURL?: string;
-  htmlLang?: IsoLanguageCode;
-  locale?: BcpLanguageCode;
-  alternateLocales?: BcpLanguageCode[];
+  htmlLang?: ISOLanguageCode;
+  locale?: BCPLanguageCode;
+  alternateLocales?: BCPLanguageCode[];
   author?: AttributorData;
   publisher?: AttributorData;
   pubDatetime?: Date;
   modDatetime?: Date;
-  ogType?: OgTypeTag;
+  ogType?: OGTypeTag;
   ogImage?: SocialImageMetadata;
   twitterImage?: SocialImageMetadata;
   twitterCardType?: TwitterCardType;
@@ -52,9 +52,9 @@ const {
   twitterUsername = defaultWebsiteConfig.socialMedia.twitter?.username,
 } = Astro.props;
 
-const ogImageUrl = new URL(ogImage.fileName, Astro.url.origin).href;
+const ogImageURL = new URL(ogImage.fileName, Astro.url.origin).href;
 
-const twitterImageUrl = twitterImage
+const twitterImageURL = twitterImage
   ? new URL(twitterImage.fileName, Astro.url.origin).href
   : undefined;
 
@@ -64,20 +64,20 @@ const structuredData: Record<string, unknown> = {
 if (ogType === 'article') {
   structuredData['@type'] = 'BlogPosting';
   structuredData.headline = title;
-  structuredData.image = ogImageUrl;
+  structuredData.image = ogImageURL;
   structuredData.datePublished = pubDatetime?.toISOString();
   if (modDatetime) structuredData.dateModified = modDatetime.toISOString();
   structuredData.author = [
     {
       '@type': author.type,
       name: author.displayName,
-      url: author.profileUrl,
+      url: author.profileURL,
     },
   ];
   structuredData.publisher = {
     '@type': publisher.type,
     name: publisher.displayName,
-    url: publisher.profileUrl,
+    url: publisher.profileURL,
   };
 } else if (ogType === 'website') {
   structuredData['@type'] = 'WebSite';
@@ -125,7 +125,7 @@ if (ogType === 'article') {
       ogType === 'article' && (
         <meta
           property="og:article:author"
-          content={author.profileUrl ? author.profileUrl : author.displayName}
+          content={author.profileURL ? author.profileURL : author.displayName}
         />
       )
     }
@@ -146,7 +146,7 @@ if (ogType === 'article') {
       ))
     }
 
-    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:type" content={ogImage.imageType} />
     <meta property="og:image:width" content={String(ogImage.width)} />
     <meta property="og:image:height" content={String(ogImage.height)} />
@@ -163,7 +163,7 @@ if (ogType === 'article') {
     <meta property="twitter:description" content={description} />
     <meta
       property="twitter:image"
-      content={twitterImageUrl ? twitterImageUrl : ogImageUrl}
+      content={twitterImageURL ? twitterImageURL : ogImageURL}
     />
     <meta
       property="twitter:image:type"
