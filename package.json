@@ -43,6 +43,13 @@
     "*": "prettier --write --ignore-unknown",
     "*.{astro,js,jsx,cjs,mjs,ts,tsx,cts}": "eslint --fix"
   },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "rollup"
+      ]
+    }
+  },
   "volta": {
     "node": "20.18.0",
     "pnpm": "9.12.1"
