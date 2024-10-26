@@ -23,7 +23,9 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
-    rules: {},
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
   },
   {
     files: ['**/*.astro'],
