@@ -1,0 +1,21 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  id: string;
+  startingState?: 'open' | 'closed';
+}>;
+
+const { as: Tag = 'div', id, startingState = 'closed', ...props } = Astro.props;
+
+const attributes = {
+  ...(startingState === 'closed'
+    ? { 'data-state-closed': '' }
+    : { 'data-state-open': '' }),
+};
+---
+
+<Tag id={id} {...props} {...attributes} data-component-disclosure-panel>
+  <slot />
+</Tag>

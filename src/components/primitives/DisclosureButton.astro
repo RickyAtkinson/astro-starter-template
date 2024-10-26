@@ -1,0 +1,70 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+  'aria-controls': string;
+}
+
+const { 'aria-controls': ariaControls, ...props } = Astro.props;
+
+const attributes = {
+  'aria-controls': ariaControls,
+};
+---
+
+<script>
+  const disclosureButtons = document.querySelectorAll(
+    '[data-component-disclosure-button]'
+  );
+
+  const toggleOpenDataState = (ele: Element) => {
+    if (ele.getAttribute('data-state-open') === '') {
+      ele.removeAttribute('data-state-open');
+      ele.setAttribute('data-state-closed', '');
+    } else {
+      ele.removeAttribute('data-state-closed');
+      ele.setAttribute('data-state-open', '');
+    }
+  };
+
+  disclosureButtons.forEach((button) => {
+    // Set up the initial state based on the starting state of the
+    // DisclosurePanel that this button controls
+    const ariaControls = button.getAttribute('aria-controls');
+    if (ariaControls) {
+      const elm = document.getElementById(ariaControls);
+      const isOpen = '' === elm?.getAttribute('data-state-open');
+      button.setAttribute('aria-expanded', isOpen.toString());
+      isOpen
+        ? button.setAttribute('data-state-open', '')
+        : button.setAttribute('data-state-closed', '');
+    }
+
+    // Add Event Listener
+    button.addEventListener('click', (event: Event) => {
+      const button = event.currentTarget as HTMLButtonElement;
+      const ariaControls = button.getAttribute('aria-controls');
+      if (!ariaControls) return;
+      const targetPanel = document.querySelector(`#${ariaControls}`);
+      if (!targetPanel) return;
+
+      const buttons = document.querySelectorAll(
+        `[aria-controls="${ariaControls}"]`
+      );
+      const isOpen = '' === targetPanel?.getAttribute('data-state-open');
+
+      console.log(button, buttons, targetPanel, isOpen);
+      buttons.forEach((button) => {
+        button.setAttribute('aria-expanded', isOpen.toString());
+        toggleOpenDataState(button as HTMLElement);
+      });
+      toggleOpenDataState(targetPanel);
+    });
+  });
+</script>
+
+<button {...props} {...attributes} data-component-disclosure-button>
+  <slot />
+</button>
+
+<script></script>
