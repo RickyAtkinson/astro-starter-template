@@ -13,6 +13,8 @@
     "minmax",
     "nofollow",
     "noindex",
+    "noreferrer",
+    "onclick",
     "pintrest",
     "rarr",
     "rgba",
