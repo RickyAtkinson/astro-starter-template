@@ -23,7 +23,6 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
-
     rules: {},
   },
   {
@@ -49,5 +48,8 @@ export default [
         { path: 'always' },
       ],
     },
+  },
+  {
+    ignores: ['.astro', 'dist'],
   },
 ];
