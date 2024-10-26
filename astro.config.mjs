@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import { defaultWebsiteConfig } from './src/config';
 
