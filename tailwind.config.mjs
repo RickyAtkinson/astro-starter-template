@@ -31,5 +31,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    /* eslint-disable @typescript-eslint/no-require-imports */
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    /* eslint-enable @typescript-eslint/no-require-imports */
+  ],
 };
