@@ -2,13 +2,27 @@
 import PageLayout from '@layouts/PageLayout.astro';
 ---
 
+<script>
+  const handleClick = () => {
+    alert('Clicked');
+  };
+
+  document
+    .getElementById('test-button')
+    ?.addEventListener('click', handleClick);
+</script>
+
 <PageLayout title="Coming soon">
   <div class="container">
-    <h2>Welcome to the <strong>Astro</strong> Starter Template</h2>
-    <p>
+    <h2
+      class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+    >
+      Welcome to the <strong>Astro</strong> Starter Template
+    </h2>
+    <p class="leading-6 [&:not(:first-child)]:mt-4">
       To get started, open the directory <code>src/pages</code> in your project.
     </p>
-    <p>
+    <p class="leading-6 [&:not(:first-child)]:mt-4">
       <strong>Code Challenge:</strong> Tweak the "Welcome to the Astro Starter Template"
       message above.
     </p>

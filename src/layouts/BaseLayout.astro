@@ -194,7 +194,9 @@ if (ogType === 'article') {
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body class="flex min-h-svh flex-col antialiased">
+  <body
+    class="flex min-h-svh flex-col bg-light text-dark antialiased dark:bg-dark dark:text-light"
+  >
     <slot />
   </body>
 </html>
