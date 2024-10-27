@@ -1,5 +1,8 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
+
+import DisclosureButton from '@components/primitives/DisclosureButton.astro';
+import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
 ---
 
 <script>
@@ -26,5 +29,39 @@ import PageLayout from '@layouts/PageLayout.astro';
       <strong>Code Challenge:</strong> Tweak the "Welcome to the Astro Starter Template"
       message above.
     </p>
+    <div class="mt-6">
+      <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+        ARIA Disclosure Component
+      </h3>
+      <div class="mt-4">
+        <DisclosureButton
+          aria-controls="disclosure-panel-1"
+          class="group inline-block rounded bg-purple-700 px-4 py-2 font-semibold text-white hover:bg-purple-500"
+        >
+          <span class="group-data-[state-open]:hidden">Open</span>
+          <span class="group-data-[state-closed]:hidden">Close</span>
+        </DisclosureButton>
+        <DisclosureButton
+          aria-controls="disclosure-panel-1"
+          class="group inline-block rounded bg-purple-700 px-4 py-2 font-semibold text-white hover:bg-purple-500"
+        >
+          <span class="group-data-[state-open]:hidden">Second open button</span>
+          <span class="group-data-[state-closed]:hidden"
+            >Second close button</span
+          >
+        </DisclosureButton>
+      </div>
+      <DisclosurePanel
+        id="disclosure-panel-1"
+        class="mt-4 data-[state-closed]:hidden"
+      >
+        <p class="leading-6 [&:not(:first-child)]:mt-4">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
+          minus delectus illum totam mollitia laudantium molestias tempora fuga
+          eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
+          culpa?
+        </p>
+      </DisclosurePanel>
+    </div>
   </div>
 </PageLayout>
