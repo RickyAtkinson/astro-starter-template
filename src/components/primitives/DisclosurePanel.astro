@@ -4,13 +4,18 @@ import type { HTMLTag, Polymorphic } from 'astro/types';
 type Props<Tag extends HTMLTag> = Polymorphic<{
   as: Tag;
   id: string;
-  startingState?: 'open' | 'closed';
+  initialState?: 'open' | 'closed';
 }>;
 
-const { as: Tag = 'div', id, startingState = 'closed', ...props } = Astro.props;
+const {
+  as: Tag = 'div',
+  id,
+  initialState: initialState = 'closed',
+  ...props
+} = Astro.props;
 
 const attributes = {
-  ...(startingState === 'closed'
+  ...(initialState === 'closed'
     ? { 'data-state-closed': '' }
     : { 'data-state-open': '' }),
 };
