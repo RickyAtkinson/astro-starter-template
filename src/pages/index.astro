@@ -3,6 +3,8 @@ import PageLayout from '@layouts/PageLayout.astro';
 
 import DisclosureButton from '@components/primitives/DisclosureButton.astro';
 import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
+
+import Disclosure from '@components/Disclosure.astro';
 ---
 
 <script>
@@ -29,10 +31,22 @@ import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
       <strong>Code Challenge:</strong> Tweak the "Welcome to the Astro Starter Template"
       message above.
     </p>
-    <div class="mt-6">
+
+    <section class="mt-6">
       <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
-        ARIA Disclosure Component
+        Component Primitives
       </h3>
+      <p class="leading-6 [&:not(:first-child)]:mt-4">
+        These primitives are unstyled components with predefined behaviors that
+        comply with ARIA accessibility standards. They are used to build styled
+        components with.
+      </p>
+    </section>
+
+    <section class="mt-6">
+      <h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
+        Disclosure Button/Panel Components
+      </h4>
       <div class="mt-4">
         <DisclosureButton
           aria-controls="disclosure-panel-1"
@@ -62,8 +76,34 @@ import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
           culpa?
         </p>
       </DisclosurePanel>
-    </div>
-    <div class="mt-6">
+    </section>
+
+    <section class="mt-6">
+      <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+        Styled Components
+      </h3>
+      <p class="leading-6 [&:not(:first-child)]:mt-4">
+        These are the components you will build your sites with.
+      </p>
+    </section>
+
+    <section class="mt-6">
+      <h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
+        Disclosure
+      </h4>
+      <Disclosure
+        id="disclosure-example"
+        heading="This is a disclosure. Click to find out more."
+        class="mt-4"
+      >
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem voluptas
+        eius eligendi, repellat minima totam, architecto nostrum quasi modi quae
+        vitae nulla culpa, itaque rem consequuntur! Impedit debitis facere
+        nesciunt?
+      </Disclosure>
+    </section>
+
+    <section class="mt-6">
       <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
         Another Section
       </h3>
@@ -133,6 +173,6 @@ import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
         eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
         culpa?
       </p>
-    </div>
+    </section>
   </div>
 </PageLayout>

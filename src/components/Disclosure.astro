@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+import DisclosureButton from './primitives/DisclosureButton.astro';
+import DisclosurePanel from './primitives/DisclosurePanel.astro';
+
+interface Props extends HTMLAttributes<'div'> {
+  heading: string;
+  id: string;
+  class?: string;
+}
+
+const { heading, id, class: className, ...props } = Astro.props;
+---
+
+<div
+  id={id}
+  class:list={[
+    'overflow-hidden rounded bg-neutral-300 dark:bg-neutral-900',
+    className,
+  ]}
+  {...props}
+  data-component-disclosure
+>
+  <DisclosureButton
+    aria-controls={`${id}-panel`}
+    class="group flex w-full items-center justify-between bg-purple-700 px-4 py-2 text-left font-semibold text-white transition-colors duration-0 hover:bg-purple-500 data-[state-open]:bg-indigo-700 data-[state-open]:hover:bg-indigo-500 motion-safe:duration-200"
+  >
+    <span class="pr-4">{heading}</span>
+    <span
+      class="transition-transform duration-0 group-data-[state-open]:rotate-90 motion-safe:duration-300"
+    >
+      &#8594;
+    </span>
+  </DisclosureButton>
+  <DisclosurePanel
+    id={`${id}-panel`}
+    class="overflow-hidden p-4 data-[state-closed]:max-h-0 data-[state-closed]:py-0 motion-safe:transition-[max-height_0.5s_cubic-bezier(0.5,0,0.5,1)]"
+  >
+    <slot />
+  </DisclosurePanel>
+</div>
