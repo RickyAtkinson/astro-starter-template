@@ -5,6 +5,7 @@ import DisclosureButton from '@components/primitives/DisclosureButton.astro';
 import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
 
 import Disclosure from '@components/Disclosure.astro';
+import Accordion from '@components/Accordion.astro';
 ---
 
 <script>
@@ -104,75 +105,24 @@ import Disclosure from '@components/Disclosure.astro';
     </section>
 
     <section class="mt-6">
-      <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
-        Another Section
-      </h3>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
-      <p class="leading-6 [&:not(:first-child)]:mt-4">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dolore
-        minus delectus illum totam mollitia laudantium molestias tempora fuga
-        eum harum alias doloribus, eveniet pariatur nam sed molestiae odio
-        culpa?
-      </p>
+      <h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
+        Accordion
+      </h4>
+      <Accordion
+        id="accordion-test"
+        class="mt-4"
+        rows={[
+          { heading: 'Test 1', content: 'Test 1 content' },
+          {
+            heading: 'Test 2 which is a lot longer than the first one',
+            content:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, totam blanditiis tempore aperiam atque ipsum, temporibus reprehenderit laboriosam ut quae debitis vero id architecto modi voluptatibus? Vitae consectetur iusto autem.',
+          },
+          { heading: 'Test 3', content: 'Now you see me!' },
+          { heading: 'Test 4', content: 'Now you see me!' },
+          { heading: 'Test 5', content: 'Now you see me!' },
+        ]}
+      />
     </section>
   </div>
 </PageLayout>

@@ -1,0 +1,70 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { type AccordionRow } from './types';
+
+import DisclosureButton from './primitives/DisclosureButton.astro';
+import DisclosurePanel from './primitives/DisclosurePanel.astro';
+
+interface Props extends HTMLAttributes<'div'> {
+  rows: AccordionRow[];
+  id: string;
+  class?: string;
+}
+
+const { rows = [], id, class: className, ...props } = Astro.props;
+---
+
+<script>
+  import { handleDisclosureButtonClick } from '@scripts/utils';
+
+  const accordions = document.querySelectorAll('[data-component-accordion]');
+
+  accordions.forEach((accordion) => {
+    const buttons = accordion.querySelectorAll(
+      '[data-component-disclosure-button]'
+    );
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        buttons.forEach((button2) => {
+          if (
+            button2 !== button &&
+            button2.getAttribute('aria-expanded') === 'true'
+          )
+            handleDisclosureButtonClick(button2 as HTMLButtonElement);
+        });
+      });
+    });
+  });
+</script>
+
+<div
+  id={id}
+  class:list={[
+    'overflow-hidden rounded-md bg-neutral-100 shadow-sm dark:bg-neutral-800',
+    className,
+  ]}
+  {...props}
+  data-component-accordion
+>
+  {
+    rows.map((row, index) => (
+      <>
+        <DisclosureButton
+          aria-controls={`${id}-${index}`}
+          class="group flex w-full items-center justify-between bg-neutral-300 px-4 py-2 text-left font-semibold text-dark outline-none transition-colors duration-0 hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black data-[state-open]:bg-purple-700 data-[state-open]:text-light data-[state-open]:hover:bg-purple-500 motion-safe:duration-200 dark:bg-neutral-900 dark:text-light dark:hover:bg-neutral-700 focus-visible:dark:ring-white"
+        >
+          <span class="pr-4">{row.heading}</span>
+          <span class="transition-transform duration-0 group-data-[state-open]:rotate-90 motion-safe:duration-300">
+            &#8594;
+          </span>
+        </DisclosureButton>
+        <DisclosurePanel
+          id={`${id}-${index}`}
+          class="overflow-hidden p-4 data-[state-closed]:max-h-0 data-[state-closed]:py-0 motion-safe:transition-[max-height_0.75s_cubic-bezier(0.5,0,0.5,1)]"
+        >
+          <p class="leading-6 [&:not(:first-child)]:mt-4">{row.content}</p>
+        </DisclosurePanel>
+      </>
+    ))
+  }
+</div>
