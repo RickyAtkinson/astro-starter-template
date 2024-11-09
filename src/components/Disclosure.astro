@@ -16,7 +16,7 @@ const { heading, id, class: className, ...props } = Astro.props;
 <div
   id={id}
   class:list={[
-    'overflow-hidden rounded-md bg-neutral-300 dark:bg-neutral-900',
+    'overflow-hidden rounded-md bg-neutral-100 shadow-sm dark:bg-neutral-800',
     className,
   ]}
   {...props}
@@ -24,7 +24,7 @@ const { heading, id, class: className, ...props } = Astro.props;
 >
   <DisclosureButton
     aria-controls={`${id}-panel`}
-    class="group flex w-full items-center justify-between bg-purple-700 px-4 py-2 text-left font-semibold text-white transition-colors duration-0 hover:bg-purple-500 data-[state-open]:bg-indigo-700 data-[state-open]:hover:bg-indigo-500 motion-safe:duration-200"
+    class="group flex w-full items-center justify-between bg-neutral-300 px-4 py-2 text-left font-semibold text-dark transition-colors duration-0 hover:bg-neutral-200 data-[state-open]:bg-purple-700 data-[state-open]:text-light data-[state-open]:hover:bg-purple-500 motion-safe:duration-200 dark:bg-neutral-900 dark:text-light dark:hover:bg-neutral-700"
   >
     <span class="pr-4">{heading}</span>
     <span
