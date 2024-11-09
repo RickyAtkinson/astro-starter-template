@@ -13,19 +13,11 @@ const attributes = {
 ---
 
 <script>
+  import { handleDisclosureButtonClick } from '@scripts/utils';
+
   const disclosureButtons = document.querySelectorAll(
     '[data-component-disclosure-button]'
   );
-
-  const toggleOpenDataState = (ele: Element) => {
-    if (ele.getAttribute('data-state-open') === '') {
-      ele.removeAttribute('data-state-open');
-      ele.setAttribute('data-state-closed', '');
-    } else {
-      ele.removeAttribute('data-state-closed');
-      ele.setAttribute('data-state-open', '');
-    }
-  };
 
   disclosureButtons.forEach((button) => {
     // Set up the initial state based on the starting state of the
@@ -42,22 +34,7 @@ const attributes = {
 
     // Add Event Listener
     button.addEventListener('click', (event: Event) => {
-      const button = event.currentTarget as HTMLButtonElement;
-      const ariaControls = button.getAttribute('aria-controls');
-      if (!ariaControls) return;
-      const targetPanel = document.querySelector(`#${ariaControls}`);
-      if (!targetPanel) return;
-
-      const buttons = document.querySelectorAll(
-        `[aria-controls="${ariaControls}"]`
-      );
-      const isOpen = '' === targetPanel?.getAttribute('data-state-open');
-
-      buttons.forEach((button) => {
-        button.setAttribute('aria-expanded', isOpen.toString());
-        toggleOpenDataState(button as HTMLElement);
-      });
-      toggleOpenDataState(targetPanel);
+      handleDisclosureButtonClick(event.currentTarget as HTMLButtonElement);
     });
   });
 </script>

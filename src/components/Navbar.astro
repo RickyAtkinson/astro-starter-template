@@ -9,35 +9,23 @@ import logoImage from '@assets/images/logo.svg';
 ---
 
 <script>
+  import { toggleARIAHidden, toggleTabbable } from '@scripts/utils';
+
   const mainNav = document.querySelector('#main-nav');
   const menuToggleBtn = document.querySelector('#mobile-menu-toggle-btn');
   const mobileMenu = document.querySelector('#main-nav-mobile-menu');
-  const navLinks = document.querySelectorAll('#main-nav-mobile-menu>li>a');
-
+  const mobileNavLinks = document.querySelectorAll(
+    '#main-nav-mobile-menu>li>a'
+  );
   const focusableElements = mainNav?.querySelectorAll(
     'input:not(#main-nav-desktop-menu input), textarea:not(#main-nav-desktop-menu textarea), button:not(#main-nav-desktop-menu button), [href]:not([disabled]):not(#main-nav-desktop-menu [href])'
   );
   const firstFocusableEl = focusableElements?.[0];
   const lastFocusableEl = focusableElements?.[focusableElements.length - 1];
 
-  // Toggles tabindex between "0" and "-1"
-  const toggleTabbable = (element: HTMLElement) => {
-    if (element.tabIndex < 0) {
-      element.tabIndex = 0;
-    } else {
-      element.tabIndex = -1;
-    }
-  };
-
-  // Toggles aria-hidden between "true" and "false"
-  const toggleARIAHidden = (ele: HTMLElement) => {
-    ele.getAttribute('aria-hidden') === 'true'
-      ? ele.removeAttribute('aria-hidden')
-      : ele.setAttribute('aria-hidden', 'true');
-  };
-
+  // Extra menu toggle button click event listener
   menuToggleBtn?.addEventListener('click', () => {
-    navLinks.forEach((link) => {
+    mobileNavLinks.forEach((link) => {
       (link as HTMLElement).blur();
       // Ensure mobile menu links can't be focused when the menu is offscreen
       toggleTabbable(link as HTMLElement);
