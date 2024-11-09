@@ -1,0 +1,175 @@
+---
+import { mainNavMenuLinks } from 'config';
+import Image from 'astro/components/Image.astro';
+
+import DisclosureButton from './primitives/DisclosureButton.astro';
+import DisclosurePanel from './primitives/DisclosurePanel.astro';
+
+import logoImage from '@assets/images/logo.svg';
+---
+
+<script>
+  const mainNav = document.querySelector('#main-nav');
+  const menuToggleBtn = document.querySelector('#mobile-menu-toggle-btn');
+  const mobileMenu = document.querySelector('#main-nav-mobile-menu');
+  const navLinks = document.querySelectorAll('#main-nav-mobile-menu>li>a');
+
+  const focusableElements = mainNav?.querySelectorAll(
+    'input:not(#main-nav-desktop-menu input), textarea:not(#main-nav-desktop-menu textarea), button:not(#main-nav-desktop-menu button), [href]:not([disabled]):not(#main-nav-desktop-menu [href])'
+  );
+  const firstFocusableEl = focusableElements?.[0];
+  const lastFocusableEl = focusableElements?.[focusableElements.length - 1];
+
+  // Toggles tabindex between "0" and "-1"
+  const toggleTabbable = (element: HTMLElement) => {
+    if (element.tabIndex < 0) {
+      element.tabIndex = 0;
+    } else {
+      element.tabIndex = -1;
+    }
+  };
+
+  // Toggles aria-hidden between "true" and "false"
+  const toggleARIAHidden = (ele: HTMLElement) => {
+    ele.getAttribute('aria-hidden') === 'true'
+      ? ele.removeAttribute('aria-hidden')
+      : ele.setAttribute('aria-hidden', 'true');
+  };
+
+  menuToggleBtn?.addEventListener('click', () => {
+    navLinks.forEach((link) => {
+      (link as HTMLElement).blur();
+      // Ensure mobile menu links can't be focused when the menu is offscreen
+      toggleTabbable(link as HTMLElement);
+      // Hide/reveal menu to screen readers
+      toggleARIAHidden(link as HTMLElement);
+    });
+  });
+
+  // Handle key events
+  mainNav?.addEventListener('keydown', (event) => {
+    if (
+      mobileMenu?.getAttribute('data-state-open') === '' &&
+      event instanceof KeyboardEvent
+    ) {
+      // Lock the focus inside the mobile menu when it is open
+      if (event.key === 'Tab') {
+        if (event.shiftKey && document.activeElement === firstFocusableEl) {
+          event.preventDefault();
+          if (lastFocusableEl instanceof HTMLElement) lastFocusableEl.focus();
+        } else if (
+          !event.shiftKey &&
+          document.activeElement === lastFocusableEl
+        ) {
+          event.preventDefault();
+          if (firstFocusableEl instanceof HTMLElement) firstFocusableEl.focus();
+        }
+      }
+      // Close menu with the Escape key
+      else if (event.key === 'Escape') {
+        if (menuToggleBtn instanceof HTMLElement) menuToggleBtn.click();
+      }
+    }
+  });
+</script>
+
+<style is:global>
+  :root {
+    /* btn-font-size * btn-line-height + btn-padding-y + navbar-padding-y */
+    --theme-fixed-navbar-height: calc(1rem * 1.5 + (0.5rem * 2) + (1.5rem * 2));
+  }
+
+  body {
+    padding-top: var(--theme-fixed-navbar-height);
+    overflow-x: hidden;
+  }
+</style>
+
+<nav
+  id="main-nav"
+  class="fixed left-0 right-0 top-0 bg-neutral-300 py-6 dark:bg-neutral-800"
+>
+  <div class="container relative z-50">
+    <div class="flex items-center justify-between">
+      <a
+        href="/"
+        class="-ml-[2px] block h-8 p-[2px] transition-[padding] duration-0 hover:p-0 motion-safe:duration-200"
+      >
+        <Image
+          src={logoImage}
+          height={24}
+          alt="ACME corp logo"
+          class="h-full w-auto dark:invert"
+        />
+      </a>
+      <ul id="main-nav-desktop-menu" class="hidden items-center gap-6 sm:flex">
+        {
+          mainNavMenuLinks.map((link, index) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'transition-colors duration-0 motion-safe:duration-200',
+                  {
+                    'hover:text-purple-500':
+                      index + 1 !== mainNavMenuLinks.length,
+                  },
+                  {
+                    'inline-block rounded bg-purple-700 px-4 py-2 font-semibold text-white hover:bg-purple-500':
+                      index + 1 === mainNavMenuLinks.length,
+                  },
+                ]}
+              >
+                {link.linkText}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <DisclosureButton
+        id="mobile-menu-toggle-btn"
+        aria-controls="main-nav-mobile-menu"
+        aria-label="Toggle main menu"
+        class="group inline-block rounded bg-purple-700 px-4 py-2 font-semibold text-white hover:bg-purple-500 sm:hidden"
+      >
+        <span aria-hidden="true" class="group-data-[state-open]:hidden"
+          >&equiv;</span
+        >
+        <span aria-hidden="true" class="group-data-[state-closed]:hidden"
+          >&times;</span
+        >
+      </DisclosureButton>
+    </div>
+  </div>
+  <DisclosurePanel
+    as="ul"
+    id="main-nav-mobile-menu"
+    class="absolute left-0 top-0 z-[49] flex h-svh w-full flex-col items-center justify-center overflow-hidden bg-neutral-900 px-4 transition-[left] duration-0 ease-in-out data-[state-closed]:left-full data-[state-open]:shadow-lg motion-safe:duration-500 sm:hidden"
+    tabindex="-1"
+  >
+    {
+      mainNavMenuLinks.map((link, index) => (
+        <li class="[&:not(:first-child)]:mt-4">
+          <a
+            href={link.href}
+            tabindex="-1"
+            class:list={[
+              'inline-block text-xl font-semibold transition-colors duration-0 motion-safe:duration-200',
+              {
+                'p-2 hover:text-purple-500':
+                  index + 1 !== mainNavMenuLinks.length,
+              },
+              {
+                'rounded bg-purple-700 px-4 py-2 text-white hover:bg-purple-500':
+                  index + 1 === mainNavMenuLinks.length,
+              },
+            ]}
+            aria-hidden="true"
+          >
+            {link.linkText}
+          </a>
+        </li>
+      ))
+    }
+  </DisclosurePanel>
+</nav>

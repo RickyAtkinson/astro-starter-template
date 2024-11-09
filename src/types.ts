@@ -15,6 +15,11 @@ export interface WebsiteConfig {
   socialMedia: SocialMedia;
 }
 
+export interface MenuLink {
+  linkText: string;
+  href: string;
+}
+
 export interface SocialImageMetadata {
   fileName: string;
   imageType: SocialImageType;

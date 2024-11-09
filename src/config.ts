@@ -1,4 +1,4 @@
-import type { WebsiteConfig } from 'types';
+import type { WebsiteConfig, MenuLink } from 'types';
 
 export const defaultWebsiteConfig: WebsiteConfig = {
   siteURL: new URL('http://localhost:4321/'),
@@ -59,3 +59,10 @@ export const defaultWebsiteConfig: WebsiteConfig = {
     },
   },
 };
+
+export const mainNavMenuLinks: MenuLink[] = [
+  { linkText: 'Home', href: '/' },
+  { linkText: 'About', href: '/' },
+  { linkText: 'Blog', href: '/' },
+  { linkText: 'Contact', href: '/' },
+];
