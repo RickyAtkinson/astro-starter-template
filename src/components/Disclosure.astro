@@ -24,7 +24,7 @@ const { heading, id, class: className, ...props } = Astro.props;
 >
   <DisclosureButton
     aria-controls={`${id}-panel`}
-    class="group flex w-full items-center justify-between bg-neutral-300 px-4 py-2 text-left font-semibold text-dark transition-colors duration-0 hover:bg-neutral-200 data-[state-open]:bg-purple-700 data-[state-open]:text-light data-[state-open]:hover:bg-purple-500 motion-safe:duration-200 dark:bg-neutral-900 dark:text-light dark:hover:bg-neutral-700"
+    class="group flex w-full items-center justify-between bg-neutral-300 px-4 py-2 text-left font-semibold text-dark outline-none transition-colors duration-0 hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black data-[state-open]:bg-purple-700 data-[state-open]:text-light data-[state-open]:hover:bg-purple-500 motion-safe:duration-200 dark:bg-neutral-900 dark:text-light dark:hover:bg-neutral-700 focus-visible:dark:ring-white"
   >
     <span class="pr-4">{heading}</span>
     <span
