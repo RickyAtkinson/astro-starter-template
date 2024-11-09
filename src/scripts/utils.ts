@@ -13,7 +13,7 @@ export const handleDisclosureButtonClick = (button: HTMLButtonElement) => {
   // Update the `aria-expanded` attribute for all buttons that control the same
   // panel
   buttons.forEach((button) => {
-    button.setAttribute('aria-expanded', isOpen.toString());
+    button.setAttribute('aria-expanded', (!isOpen).toString());
     toggleOpenDataState(button as HTMLElement);
   });
 
