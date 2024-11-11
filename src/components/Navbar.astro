@@ -80,10 +80,10 @@ import logoImage from '@assets/images/logo.svg';
 
 <nav
   id="main-nav"
-  class="fixed left-0 right-0 top-0 bg-neutral-300 py-6 dark:bg-neutral-800"
+  class="fixed left-0 right-0 top-0 z-30 bg-neutral-300 py-6 dark:bg-neutral-800"
   data-component-navbar
 >
-  <div class="container relative z-50">
+  <div class="container relative z-20">
     <div class="flex items-center justify-between">
       <a
         href="/"
@@ -138,7 +138,7 @@ import logoImage from '@assets/images/logo.svg';
   <DisclosurePanel
     as="ul"
     id="main-nav-mobile-menu"
-    class="absolute left-0 top-0 z-[49] flex h-svh w-full flex-col items-center justify-center overflow-hidden bg-neutral-200 px-4 transition-[left] duration-0 ease-in-out data-[state-closed]:left-full data-[state-open]:shadow-lg motion-safe:duration-500 sm:hidden dark:bg-neutral-900"
+    class="absolute left-0 top-0 z-10 flex h-svh w-full flex-col items-center justify-center overflow-hidden bg-neutral-200 px-4 transition-[left] duration-0 ease-in-out data-[state-closed]:left-full data-[state-open]:shadow-lg motion-safe:duration-500 sm:hidden dark:bg-neutral-900"
     tabindex="-1"
   >
     {
