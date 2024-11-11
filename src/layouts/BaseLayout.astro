@@ -30,6 +30,7 @@ interface Props {
   twitterCardType?: TwitterCardType;
   twitterUsername?: string;
   isPageIndexed?: boolean;
+  enableSmoothScroll?: boolean;
 }
 
 const {
@@ -52,6 +53,7 @@ const {
   twitterCardType = 'summary_large_image',
   twitterUsername = defaultWebsiteConfig.socialMedia.twitter?.username,
   isPageIndexed = true,
+  enableSmoothScroll = true,
 } = Astro.props;
 
 const ogImageURL = new URL(ogImage.fileName, Astro.url.origin).href;
@@ -89,7 +91,7 @@ if (ogType === 'article') {
 ---
 
 <!doctype html>
-<html lang={htmlLang}>
+<html lang={htmlLang} class:list={{ 'scroll-smooth': enableSmoothScroll }}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

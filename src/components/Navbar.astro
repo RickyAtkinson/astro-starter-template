@@ -71,6 +71,11 @@ import logoImage from '@assets/images/logo.svg';
     padding-top: var(--theme-fixed-navbar-height);
     overflow-x: hidden;
   }
+
+  /* Give elements with an ID some scroll-padding-top to avoid anchor links appearing under the navbar */
+  *[id] {
+    scroll-margin-top: calc(var(--theme-fixed-navbar-height) + 1.5rem);
+  }
 </style>
 
 <nav
