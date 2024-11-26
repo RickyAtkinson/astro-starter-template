@@ -4,6 +4,7 @@ import PageLayout from '@layouts/PageLayout.astro';
 import DisclosureButton from '@components/primitives/DisclosureButton.astro';
 import DisclosurePanel from '@components/primitives/DisclosurePanel.astro';
 
+import Button from '@components/Button.astro';
 import Disclosure from '@components/Disclosure.astro';
 import Accordion from '@components/Accordion.astro';
 ---
@@ -82,6 +83,15 @@ import Accordion from '@components/Accordion.astro';
       <p class="leading-6 [&:not(:first-child)]:mt-4">
         These are the components you will build your sites with.
       </p>
+    </section>
+
+    <section class="mt-6">
+      <h4 class="text-xl font-semibold tracking-tight">Button</h4>
+      <ul class="mt-4">
+        <li class="mt-2"><Button variant="primary">Click Me</Button></li>
+        <li class="mt-2"><Button variant="secondary">Click Me</Button></li>
+        <li class="mt-2"><Button variant="outline">Click Me</Button></li>
+      </ul>
     </section>
 
     <section class="mt-6">

@@ -6,6 +6,7 @@ import DisclosureButton from './primitives/DisclosureButton.astro';
 import DisclosurePanel from './primitives/DisclosurePanel.astro';
 
 import logoImage from '@assets/images/logo.svg';
+import { getButtonClassString } from '@components/Button.astro';
 ---
 
 <script>
@@ -109,7 +110,7 @@ import logoImage from '@assets/images/logo.svg';
                       index + 1 !== mainNavMenuLinks.length,
                   },
                   {
-                    'inline-block rounded-md bg-purple-700 px-4 py-2 font-semibold text-light shadow-sm hover:bg-purple-500':
+                    [getButtonClassString('primary')]:
                       index + 1 === mainNavMenuLinks.length,
                   },
                 ]}
@@ -124,7 +125,7 @@ import logoImage from '@assets/images/logo.svg';
         id="mobile-menu-toggle-btn"
         aria-controls="main-nav-mobile-menu"
         aria-label="Toggle main menu"
-        class="group inline-block rounded-md bg-purple-700 px-4 py-2 font-semibold text-light shadow-sm hover:bg-purple-500 sm:hidden"
+        class:list={[getButtonClassString('primary'), 'group sm:hidden']}
       >
         <span aria-hidden="true" class="group-data-[state-open]:hidden"
           >&equiv;</span
@@ -154,7 +155,7 @@ import logoImage from '@assets/images/logo.svg';
                   index + 1 !== mainNavMenuLinks.length,
               },
               {
-                'rounded-md bg-purple-700 px-4 py-2 text-light shadow-sm hover:bg-purple-500':
+                [getButtonClassString('primary')]:
                   index + 1 === mainNavMenuLinks.length,
               },
             ]}
