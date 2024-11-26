@@ -6,7 +6,6 @@ A basic starter template for Astro projects with:
 - Tailwind CSS
 - Prettier
 - ESLint
-- Husky
 
 ## Dependencies
 
