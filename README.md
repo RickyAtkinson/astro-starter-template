@@ -12,16 +12,37 @@ A basic starter template for Astro projects with:
 
 - [Node](https://nodejs.org/) version 20.18.0 or later recommended
 - [pnpm](https://pnpm.io/) version 9.12.1 or later recommended
+- [git](https://git-scm.com/)
 
 [Volta](https://volta.sh/) is recommended for managing Node versions. The
 recommended versions of Node and PNPm are
 [pinned](https://docs.volta.sh/reference/pin) with Volta in this templates
 `package.json` file.
 
+## Setting Up a New Project
+
+1. Download the project using degit with `pnpm dlx degit RickyAtkinson/astro-starter-template <NEW_PROJECT_NAME>`.
+1. Install the project dependencies with `pnpm install`.
+1. Initialize git with `git init` and create your first commit with `git add * && git commit -m "Initial commit"`.
+1. You can now begin developing your project with `pnpm run dev`.
+
+## Development Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                    | Action                                           |
+| :------------------------- | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm run build`           | Build your production site to `./dist/`          |
+| `pnpm run preview`         | Preview your build locally, before deploying     |
+| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+
 ## Website Config
 
-Configuration for the website is stored in `./src/config.ts`. Below are
-descriptions for the default website config fields:
+Configuration for the website is stored in `./src/config.ts`. Below are descriptions for the default website config
+fields:
 
 | Name             | Required? | Description                                                                                               |
 | :--------------- | :-------- | :-------------------------------------------------------------------------------------------------------- |
@@ -40,15 +61,5 @@ descriptions for the default website config fields:
 | twitterImage     | No        | An object containing data about the default Twitter(X) social image, ogImage will be used if not supplied |
 | socialMedia      | Yes       | An object containing details for each of the websites social media platforms                              |
 
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                    | Action                                           |
-| :------------------------- | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+The `./src/config.ts` file also contains the `mainNavMenuLinks` array. This array allows you to configure the links for
+the main navbar.
