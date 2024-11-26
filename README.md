@@ -22,8 +22,8 @@ recommended versions of Node and PNPm are
 ## Setting Up a New Project
 
 1. Download the project using degit with `pnpm dlx degit RickyAtkinson/astro-starter-template <NEW_PROJECT_NAME>`.
-1. Install the project dependencies with `pnpm install`.
 1. Initialize git with `git init` and create your first commit with `git add * && git commit -m "Initial commit"`.
+1. Install the project dependencies with `pnpm install`.
 1. You can now begin developing your project with `pnpm run dev`.
 
 ## Development Commands
