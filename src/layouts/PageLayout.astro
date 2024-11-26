@@ -13,8 +13,8 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
 interface Props {
-  title?: string;
-  titleSuffix?: string;
+  pageTitle?: string;
+  pageTitleSuffix?: string;
   description?: string;
   tags?: string[];
   author?: AttributorData;
@@ -23,11 +23,12 @@ interface Props {
   twitterCardType?: TwitterCardType;
   twitterUsername?: string;
   isPageIndexed?: boolean;
+  headerTitle: string;
 }
 
 const {
-  title,
-  titleSuffix,
+  pageTitle,
+  pageTitleSuffix,
   description,
   tags,
   author,
@@ -36,12 +37,13 @@ const {
   twitterCardType,
   twitterUsername,
   isPageIndexed,
+  headerTitle,
 } = Astro.props;
 ---
 
 <BaseLayout
-  title={title}
-  titleSuffix={titleSuffix}
+  pageTitle={pageTitle}
+  pageTitleSuffix={pageTitleSuffix}
   description={description}
   tags={tags}
   author={author}
@@ -53,7 +55,7 @@ const {
 >
   <SkipToContentButton />
   <Navbar />
-  <Header title="Page header" />
+  <Header title={headerTitle} />
   <MainWrapper>
     <slot />
   </MainWrapper>
