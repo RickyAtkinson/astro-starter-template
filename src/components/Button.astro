@@ -13,7 +13,7 @@ const { as: Tag = 'button', variant, class: className, ...props } = Astro.props;
 
 export const getButtonClassString = (variant: ButtonVariant) => {
   const baseClasses =
-    'inline-block rounded-md px-4 py-2 font-semibold shadow-sm transition-colors duration-0 motion-safe:duration-200';
+    'inline-block rounded-md px-4 py-2 font-semibold text-center shadow-sm transition-colors duration-0 motion-safe:duration-200';
 
   if (variant === 'primary')
     return baseClasses + ' bg-purple-700 hover:bg-purple-500 text-light';
