@@ -183,8 +183,5 @@
     --color-primary-950: 266deg 76% 21%;
     --color-light: 0deg 0% 96%;
     --color-dark: 0deg 0% 4%;
-
-    /* Assigned in the navbar component if needed to prevent overlapping content */
-    --theme-fixed-navbar-height: 0;
   }
 }
